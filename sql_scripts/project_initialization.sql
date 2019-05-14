@@ -70,6 +70,19 @@ CREATE TABLE IF NOT EXISTS `dev_ticket` (
 ALTER TABLE `dev_ticket` AUTO_INCREMENT = 100;
 
 
+CREATE TABLE IF NOT EXISTS `comment` (
+    `id` INT AUTO_INCREMENT NOT NULL,
+    `ticket_id` INT NOT NULL,
+    `message` VARCHAR(1000) NOT NULL,
+    `created_date` DATE NOT NULL,
+    `edited` TINYINT DEFAULT 0,
+    
+    PRIMARY KEY(id),
+
+    FOREIGN KEY(ticket_id)
+        REFERENCES dev_ticket(id)
+);
+
 
 CREATE TABLE IF NOT EXISTS `ticket_link` (
     `ticket_id` INT NOT NULL,
